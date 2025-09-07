@@ -12,7 +12,7 @@ Need [FFmpeg](https://ffmpeg.org/) for playing the noise and creating the Window
 ## If you do not want to use the executable...
 This project uses `pydub` for playing audio. `pydub` is a powerful library but it contains some bugs...
 
-If you just wanna run it as a python script, there is a patch you need to apply on `_play_with_ffplay` function in the `pydub` source code.
+If you just wanna run it as a python script, there's a patch you need to apply to the `_play_with_ffplay` function in `pydub/playback.py`.
 
 ```python
 @@ -12,6 +12,7 @@
@@ -23,3 +23,5 @@ If you just wanna run it as a python script, there is a patch you need to apply 
          seg.export(f.name, "wav")
          subprocess.call([PLAYER, "-nodisp", "-autoexit", "-hide_banner", f.name])
 ```
+
+Need python ≤ 3.12 since `pyaudioop` is removed from 3.13, which is required by `pydub`.
